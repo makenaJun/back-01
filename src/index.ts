@@ -1,11 +1,12 @@
 import express from 'express';
+import {rootRouter} from "./routers/rootRouter";
 
-const app = express()
+const app = express();
 const PORT = process.env.PORT || 3000;
 
-app.get('/', (req, res) => {
-    res.send('Hello World!')
-})
+app.use(express.json());
+
+app.use('/api', rootRouter);
 
 app.listen(PORT, () => {
     console.log(`Example app listening on port ${PORT}`)
